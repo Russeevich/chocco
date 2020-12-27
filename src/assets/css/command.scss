@@ -1,0 +1,110 @@
+.command {
+    position: relative;
+    height: 100vh;
+    &__container {
+        max-width: 940px;
+        margin: 0 auto;
+    }
+    &__inner {
+        padding-top: rem(67px);
+    }
+    &::before {
+        position: absolute;
+        right: 0;
+        top: rem(-40px);
+        content: url(../img/berry4.png);
+    }
+    &__list {
+        display: flex;
+        margin-top: rem(53px);
+    }
+    &__img {
+        width: 100%;
+    }
+    &__item {
+        width: 100%;
+        margin-left: rem(20px);
+        &:first-child {
+            margin-left: 0;
+        }
+        &.active .command__title::after {
+            transform: translate(0, -83%) rotate(-180deg);
+        }
+        &.active .command__accardeon {}
+    }
+    &__info {
+        margin-top: rem(21px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &__title {
+        font-weight: bold;
+        font-size: rem(21.0181px);
+        line-height: rem(25px);
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: rem(-14px);
+            border: rem(4px) solid transparent;
+            transform: translate(0, -30%);
+            border-top: rem(5px) solid#365A49;
+        }
+    }
+    &__accardeon {
+        margin-top: rem(8px);
+        display: flex;
+        height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all .3s ease;
+    }
+    &__text {
+        text-align: center;
+        font-weight: 300;
+        font-size: rem(18px);
+        line-height: rem(22px);
+        color: #666666;
+    }
+    &__prof {
+        margin-bottom: rem(4px);
+        font-weight: normal;
+        font-size: rem(18px);
+        line-height: rem(22px);
+        color: #292929;
+    }
+}
+
+.second-img {
+    display: none;
+}
+
+@include tablets {
+    .command {
+        &__list {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        &__item {
+            margin-left: 0;
+        }
+        &__img {
+            display: none;
+        }
+        &__prof {
+            margin-top: rem(15px);
+        }
+        &__text {
+            max-width: rem(259px);
+        }
+    }
+    .second-img {
+        display: block;
+    }
+}

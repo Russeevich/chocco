@@ -1,0 +1,95 @@
+.work {
+    height: 100vh;
+    &__inner {
+        padding-top: rem(62px);
+    }
+}
+
+.video {
+    margin-top: rem(30px);
+    display: flex;
+    justify-content: center;
+    padding: 0 rem(10px);
+    &__inner {
+        position: relative;
+    }
+    &__player {
+        width: 100%;
+    }
+    &.active .controls__play {
+        background: url(../img/stop.png);
+    }
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #404040;
+    height: rem(44px);
+    width: 100%;
+    &__inner {
+        padding: rem(5px) rem(10px) rem(7px) rem(10px);
+        display: flex;
+        align-items: center;
+    }
+    &__play {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        background: url(../img/play.png) no-repeat;
+        flex-shrink: 0;
+    }
+    &__sound {
+        width: 32px;
+        height: 32px;
+        background: url(../img/volume.png) no-repeat;
+        flex-shrink: 0;
+        margin-right: rem(10px);
+        margin-left: rem(20px);
+    }
+    &__volume {
+        outline: none;
+        width: 20%;
+    }
+    &__timer {
+        outline: none;
+        margin-left: rem(16px);
+        margin-right: rem(16px);
+        width: 100%;
+    }
+    &__info {
+        display: none;
+        margin-right: rem(10px);
+    }
+    &__end {
+        margin-left: rem(10px);
+    }
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    height: rem(7px);
+    border-radius: 5px;
+    background: #626262;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #626262;
+    height: rem(14.95px);
+    width: rem(14.95px);
+    border-radius: 50%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+    border-color: transparent;
+    color: transparent;
+}

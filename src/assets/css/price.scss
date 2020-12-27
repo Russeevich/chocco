@@ -1,0 +1,122 @@
+.price {
+    height: 100vh;
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &::after {
+            position: absolute;
+            content: url(../img/berry5.png);
+            left: rem(32px);
+            top: rem(-48px);
+            z-index: 30;
+        }
+    }
+    &__main {
+        display: inline-flex;
+        position: relative;
+        background-image: url(../img/price1.png);
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    &__title {
+        position: absolute;
+        top: rem(109px);
+        left: rem(84px);
+        font-weight: bold;
+        font-size: rem(48px);
+        line-height: rem(58px);
+        color: #ffffff;
+        white-space: nowrap;
+        z-index: 10;
+    }
+    &__img {
+        width: 100%;
+    }
+    &__click {
+        position: relative;
+        &>.price__title {
+            left: 50%;
+            top: unset;
+            bottom: 0;
+            transform: rotate(-90deg) translate(-5%, -50%);
+            transform-origin: 0 0;
+        }
+    }
+    &__first {
+        background: url(../img/price2.png);
+        width: rem(102px);
+        height: 100%;
+        background-size: cover;
+    }
+    &__second {
+        background: url(../img/price3.png);
+        width: rem(102px);
+        height: 100%;
+        background-size: cover;
+    }
+    &__third {
+        background: url(../img/price4.png);
+        width: rem(102px);
+        height: 100%;
+        background-size: cover;
+    }
+    &__info {
+        height: 100%;
+        width: 0vw;
+        display: flex;
+        overflow: hidden;
+        background: rgba(51, 53, 55, 0.9);
+        transition: width .3s ease;
+        max-width: rem(406px);
+        &.active {
+            width: 100vw;
+        }
+        @include tablets {
+            max-width: calc(66vw - 96px);
+        }
+        @include phone {
+            max-width: rem(406px);
+        }
+    }
+    &__text {
+        position: relative;
+        z-index: 31;
+        font-size: rem(16.0138px);
+        line-height: rem(24px);
+        color: #ffffff;
+        padding: rem(30px) rem(80px) 0 rem(38px);
+    }
+    &__item {
+        position: relative;
+        display: flex;
+        z-index: 10;
+        height: 100%;
+        @include phone {
+            &.active {
+                position: absolute;
+                z-index: 20;
+                right: rem(-17px);
+                width: 100vw;
+            }
+        }
+    }
+    &__list {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        height: 100%;
+    }
+}
+
+@include tablets {
+    .price {
+        height: 100%;
+    }
+}

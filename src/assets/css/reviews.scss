@@ -1,0 +1,162 @@
+.reviews {
+    height: 100vh;
+    position: relative;
+    &__container {
+        max-width: rem(940px);
+        margin: 0 auto;
+    }
+    &__inner {
+        padding-top: rem(58px);
+        padding-bottom: rem(63px);
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        width: rem(127px);
+        height: rem(167px);
+        background: url(../img/berry2.png) no-repeat;
+        background-size: contain;
+        right: rem(23px);
+        top: rem(38px);
+    }
+    &::before {
+        position: absolute;
+        content: '';
+        width: rem(102px);
+        height: rem(321px);
+        background: url(../img/leaf4.png) no-repeat;
+        background-size: contain;
+        left: 0;
+        bottom: rem(-164px);
+        z-index: 10;
+    }
+}
+
+.card {
+    position: relative;
+    margin-top: rem(32px);
+    &__inner {
+        padding: rem(42px) 0 rem(42px) rem(42px);
+        display: none;
+        background: #F8FAF9;
+        &.active {
+            display: flex;
+        }
+    }
+    &__info {
+        margin-left: rem(38px);
+        margin-top: rem(70px);
+    }
+    &__title {
+        font-weight: bold;
+        font-size: rem(27px);
+        line-height: rem(32px);
+    }
+    &__text {
+        margin-top: rem(12px);
+        font-weight: normal;
+        font-size: rem(18px);
+        line-height: rem(22px);
+        max-width: rem(463px);
+        color: #666666;
+    }
+    &__name {
+        font-weight: 600;
+        font-size: rem(18px);
+        line-height: rem(24px);
+        margin-top: rem(25px);
+    }
+    &::after {
+        position: absolute;
+        content: '';
+        width: rem(127px);
+        height: rem(167px);
+        background: url(../img/sweet.png) no-repeat;
+        background-size: cover;
+        right: 0;
+        top: rem(22px);
+    }
+    &::before {
+        position: absolute;
+        content: '';
+        width: rem(83px);
+        height: rem(83px);
+        background: #fff;
+        left: 50%;
+        top: rem(-54px);
+        border-radius: 50%;
+        transform: translate(-50%, 0);
+    }
+    &__img {
+        max-width: rem(268px);
+    }
+}
+
+.photos {
+    margin-top: rem(15px);
+    display: flex;
+    justify-content: center;
+    &__img {
+        width: rem(80px);
+        height: rem(80px);
+        border-radius: 50%;
+        margin-left: rem(6px);
+        transition: all .3s ease;
+        border: rem(6px) solid transparent;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+    &__item {
+        &.active .photos__img {
+            border: rem(6px) solid #365A49;
+        }
+    }
+}
+
+@include tablets {
+    .reviews {
+        height: 100%;
+        &__inner {
+            padding-top: rem(182px);
+        }
+    }
+    .card {
+        &__inner {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-left: 0;
+            padding-bottom: rem(24px);
+        }
+        &__info {
+            margin-left: 0;
+        }
+        &__img {
+            margin-top: rem(21px);
+            max-width: rem(130px);
+        }
+        &__text {
+            max-width: rem(677px);
+        }
+    }
+    .photos {
+        margin-top: rem(32px);
+    }
+}
+
+@include phone {
+    .card {
+        &::before {
+            display: none;
+        }
+        &__img {
+            position: relative;
+            z-index: 1006;
+        }
+    }
+    .photos {
+        position: relative;
+        z-index: 1006;
+    }
+}
