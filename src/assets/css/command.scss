@@ -1,6 +1,7 @@
 .command {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     &__container {
         max-width: 940px;
         margin: 0 auto;

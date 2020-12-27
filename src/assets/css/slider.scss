@@ -1,5 +1,6 @@
 .slider {
     height: 100vh;
+    min-height: 100vh;
     background: #F8FAF9;
     position: relative;
     &::after {
