@@ -16,7 +16,7 @@ module.exports = {
         }]
     },
     optimization: {
-        minimize: true,
+        minimize: env === "dev" ? false : true,
         minimizer: [
             new UglifyJsPlugin({
                 uglifyOptions: {
@@ -28,5 +28,5 @@ module.exports = {
             })
         ]
     },
-    devtool: env === "development" ? "#eval-source-map" : ""
+    devtool: env === "dev" ? "#eval-source-map" : ""
 };

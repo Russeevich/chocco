@@ -10,6 +10,7 @@ const webpack = require("webpack");
 const del = require("del");
 const srcdir = 'src'
 const distdir = 'build'
+const env = process.env.NODE_ENV
 
 gulp.task("styles", () => {
     return gulp
@@ -17,7 +18,7 @@ gulp.task("styles", () => {
         .pipe($gp.sourcemaps.init())
         .pipe($gp.plumber())
         .pipe($gp.sassGlob())
-        .pipe($gp.sass({ style: 'compressed' }).on("error", $gp.sass.logError))
+        .pipe($gp.sass().on("error", $gp.sass.logError))
         .pipe($gp.groupCssMediaQueries())
         .pipe(
             $gp.pxtorem({
@@ -26,9 +27,9 @@ gulp.task("styles", () => {
                 selectorBlackList: [/^html$/]
             })
         )
-        .pipe(cleanCSS())
+        .pipe($gp.if(env === 'prod', cleanCSS()))
         .pipe($gp.rename("main.min.css"))
-        .pipe($gp.if(1 === 0, $gp.sourcemaps.write()))
+        .pipe($gp.if(env === 'dev', $gp.sourcemaps.write()))
         .pipe(gulp.dest(`${distdir}/assets/css/`))
         .pipe(reload({ stream: true }));
 });
@@ -44,7 +45,7 @@ gulp.task("scripts", () => {
         .pipe(
             $webpack({
                     ...require("./webpack.config"),
-                    mode: "development"
+                    mode: env === 'dev' ? 'development' : 'production'
                 },
                 webpack
             )
