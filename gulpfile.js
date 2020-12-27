@@ -1,7 +1,5 @@
 const gulp = require("gulp");
 
-// плагины галпа отдельно подключать не нужно,
-// используем в пайпе как $gp.имяПлагина (без приставки gulp-)
 const $gp = require("gulp-load-plugins")();
 let cleanCSS = require('gulp-clean-css')
 
@@ -13,7 +11,6 @@ const del = require("del");
 const srcdir = 'src'
 const distdir = 'build'
 
-// стили
 gulp.task("styles", () => {
     return gulp
         .src(`${srcdir}/assets/css/style.scss`)
@@ -36,12 +33,10 @@ gulp.task("styles", () => {
         .pipe(reload({ stream: true }));
 });
 
-// очистка
 gulp.task("clean", () => {
     return del(distdir);
 });
 
-// собираем скрипты webpack
 gulp.task("scripts", () => {
     return gulp
         .src(`${srcdir}/assets/js/*.js`)
@@ -49,7 +44,6 @@ gulp.task("scripts", () => {
         .pipe(
             $webpack({
                     ...require("./webpack.config"),
-                    // mode: env
                     mode: "development"
                 },
                 webpack
@@ -59,7 +53,6 @@ gulp.task("scripts", () => {
         .pipe(reload({ stream: true }));
 });
 
-// dev сервер + livereload (встроенный)
 gulp.task("server", () => {
     browserSync.init({
         server: {
@@ -101,14 +94,13 @@ gulp.task("touch", () => {
         .pipe(gulp.dest(`${distdir}/assets/js/`));
 });
 
-// галповский вотчер
 gulp.task("watch", () => {
     gulp.watch(`${srcdir}/assets/css/**/*.scss`, gulp.series("styles"));
     gulp.watch(`${srcdir}/assets/js/**/*.js`, gulp.series("scripts"));
     gulp.watch(`${srcdir}/assets/img/**/*.*`, gulp.series("images"));
+    gulp.watch(`${srcdir}/*.html`, gulp.series("html"));
 });
 
-// GULP:DEV
 gulp.task(
     "default",
     gulp.series(
@@ -118,7 +110,6 @@ gulp.task(
     )
 );
 
-// GULP:build
 gulp.task(
     "build",
     gulp.series(
