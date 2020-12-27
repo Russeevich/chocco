@@ -1,6 +1,6 @@
 const sections = [...document.getElementsByTagName('section')],
     points = document.querySelectorAll('.points__link'),
-    menu__link = document.querySelectorAll('.menu__link')
+    menuLink = document.querySelectorAll('.menu__link')
 let currentSection = 0
 
 scrollToSection(currentSection)
@@ -14,7 +14,7 @@ points.forEach((item, index) => {
     })
 })
 
-menu__link.forEach((item, index) => {
+menuLink.forEach((item, index) => {
     item.addEventListener('click', e => {
         currentSection = index + 1
         e.preventDefault()
@@ -50,21 +50,11 @@ function scrollToSection(i) {
 }
 
 const scrollMob = (dir) => {
-    switch (dir) {
-        case 'up':
-            currentSection++
-            break
-        case 'down':
-            currentSection--
-            break
-
-        default:
-            break
-    }
+    if (dir === 'up') currentSection++;
+    if (dir === 'down') currentSection--;
 
     if (currentSection < 0) currentSection = 0
     else if (currentSection > (sections.length - 1)) currentSection = (sections.length - 1);
-
     scrollToSection(currentSection)
 }
 
@@ -78,6 +68,5 @@ $('body').swipe({
         direction
     ) {
         scrollMob(direction)
-        console.log(direction)
     }
 })

@@ -2,9 +2,12 @@ const player = document.getElementById('player'),
     play = document.getElementById('video__play'),
     video = document.getElementById('video'),
     timer = document.getElementById('timer'),
-    volume = document.getElementById('volume')
+    volume = document.getElementById('volume'),
+    sound = document.querySelector('.controls__sound')
 
-let time
+let time,
+    isMuted = false,
+    lastVolume = volume.value
 
 
 const getTime = (time) => {
@@ -18,6 +21,17 @@ const getTime = (time) => {
 
 video.addEventListener('loadeddata', e => {
     Init()
+})
+
+sound.addEventListener('click', e => {
+    isMuted = !isMuted
+
+    if (isMuted) {
+        lastVolume = volume.value
+        volume.value = 0
+    } else {
+        volume.value = lastVolume
+    }
 })
 
 const Init = () => {

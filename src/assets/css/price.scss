@@ -96,7 +96,11 @@
         display: flex;
         z-index: 10;
         height: 100%;
+        width: auto;
         @include phone {
+            & {
+                width: rem(102px);
+            }
             &.active {
                 position: absolute;
                 z-index: 20;
